@@ -41,7 +41,7 @@ class UserConfig():
         self.refresh_token_time = 0
         self.access_token = None
         self.access_token_time = 0
-        if self.username and self.password:
+        if self.username:
             self.retrieve_keycloak_token()
         else:
             logging.info("Commands requiring authentication will fail.")
@@ -123,7 +123,7 @@ class UserConfig():
 
     # this function gets input from the user to set the password
     def input_password(self):
-        password = getpass.getpass('PNC password: ')
+        password = getpass.getpass('Password for %s: ' % self.username)
         return password
 
     def load_username_from_config(self, config):
@@ -185,6 +185,8 @@ class UserConfig():
                 logging.error(r.content)
                 exit(1)
         else:
+            if self.username and not self.password:
+                self.password = self.input_password()
             if self.username and self.password:
                 params = {'grant_type': 'password',
                           'client_id': self.keycloak_config.client_id,
