@@ -33,7 +33,7 @@ if envconfig is not None:
     CONFIG_LOCATION = envconfig
 else:
     CONFIG_LOCATION = os.path.expanduser("~") + "/.config/pnc-cli/"
-CONFIG_FILENAME = "pnc-cli.conf"
+CONFIG_FILENAME = os.environ.get("PNC_CONFIG_FILENAME", "pnc-cli.conf")
 CONFIG = CONFIG_LOCATION + CONFIG_FILENAME
 
 
