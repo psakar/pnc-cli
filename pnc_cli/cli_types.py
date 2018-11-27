@@ -110,7 +110,7 @@ def existing_product_milestone(id_input):
 def valid_version_create(version):
     if not utils.is_valid_version(version, '^\d+\.\w+$'):
         raise argparse.ArgumentTypeError(
-            "Version must start with a number, followed by a dot and then a qualifier (e.g ER1).")
+            "Provided wrong value %s. Version must start with a number, followed by a dot and then a qualifier (e.g ER1)." % version)
     return version
 
 
