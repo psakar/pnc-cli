@@ -263,7 +263,7 @@ def save():
         pickle.dump(user, open(SAVED_USER, "wb"), protocol=pickle.HIGHEST_PROTOCOL)
 
 
-atexit.register(save)
+# atexit.register(save)
 
 
 @arg("-u", "--username", help="Username for the new user")
