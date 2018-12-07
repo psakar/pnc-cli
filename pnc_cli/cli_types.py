@@ -216,6 +216,12 @@ def existing_license(id_input):
         raise argparse.ArgumentTypeError("no License with ID {} exists".format(id_input))
     return id_input
 
+# Running build records types
+def build(id_input):
+    valid_id(id_input)
+    if not common.id_exists(pnc_api.buildsApi, id_input):
+        raise argparse.ArgumentTypeError("no Build with ID {} exists".format(id_input))
+    return id_input
 
 # Running build records types
 def existing_running_build(id_input):
