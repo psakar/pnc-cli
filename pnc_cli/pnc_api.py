@@ -27,6 +27,7 @@ class PncApi:
         self._bpm = None
         self._build_push = None
         self._builds = None
+        self._buildsApi = None
         self._builds_running = None
         self._build_groups = None
         self._build_configs = None
@@ -65,6 +66,12 @@ class PncApi:
         if not self._builds:
             self._builds = BuildrecordsApi(self.user.get_api_client())
         return self._builds
+
+    @property
+    def buildsApi(self):
+        if not self._buildsApi:
+            self._buildsApi = BuildsApi(self.user.get_api_client())
+        return self._buildsApi
 
     @property
     def builds_running(self):
